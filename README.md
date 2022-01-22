@@ -1,4 +1,7 @@
 # Presiyan Tsonevski
+
+# ![image](https://user-images.githubusercontent.com/78466089/150658138-ecbe828b-032e-4334-8d44-c3de92f85448.png)
+
 # TASK:
 Pair of employees who have worked together
 Create an application that identifies the pair of employees who have worked
