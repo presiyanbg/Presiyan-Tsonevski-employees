@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react";
 import PairEmployeesLogic from "./PairEmployeesLogic";
 
 const PairEmployees = () => {
-    const { loadFile } = PairEmployeesLogic;
+    const [ csvFile, setCsvFile ] = useState({});
+
+    const { bestPair, findBestPairOfEmployees } = PairEmployeesLogic();
 
     /**
      * Handle button click.
@@ -11,7 +14,8 @@ const PairEmployees = () => {
     const handleClick = (btn) => {
         switch (btn) {
             case 'csvSubmit' :
-                console.log("Test");
+                findBestPairOfEmployees(csvFile);
+
                 break;
             default:
                 console.log("Button click not defined");
@@ -34,9 +38,13 @@ const PairEmployees = () => {
             <div className="page-body">
                 <div className="card card-m mx-auto">
                     <header className="card-header">
-                        <div className="row">
+                        <div className="row p-1">
                             <div className="col-9">
-                                <input type="file" accept=".csv" className="form-control"/>
+                                <input type="file" accept=".csv"
+                                className="form-control" id="csvFileInput"
+                                onChange={(e) => {
+                                    setCsvFile(e.target.files[0])
+                                }}/>
                             </div>
 
                             <div className="col-3">
@@ -46,7 +54,25 @@ const PairEmployees = () => {
                     </header>
 
                     <div className="card-body">
+                        <table className="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID #1</th>
+                                    <th>Employee ID #2</th>
+                                    <th>Project ID</th>
+                                    <th>Days worked</th>
+                                </tr>
+                            </thead>
 
+                            <tbody>
+                                <tr>
+                                    <td> { bestPair.firstEmployeeId } </td>
+                                    <td> { bestPair.secondEmployeeId } </td>
+                                    <td> { bestPair.projectId } </td>
+                                    <td> { bestPair.timeWorkTogether } </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
