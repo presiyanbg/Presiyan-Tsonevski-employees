@@ -39,3 +39,4 @@ One day after receiving the task.
 ## Additional software used
 - Bootstrap
 - Fontawesome Icons
+- react-moment
